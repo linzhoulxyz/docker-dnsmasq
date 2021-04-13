@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  dns:
+    image: jpillora/dnsmasq
+    restart: always
+    ports:
+      - "53:53/udp"
+      - "8080:8080"
+    environment:
+      - HTTP_USER=admin
+      - HTTP_PASS=123456
+    volumes:
+      - ./conf/dnsmasq.conf:/etc/dnsmasq.conf
+      - ./conf/resolv.conf:/etc/resolv.conf
+
